@@ -20,7 +20,7 @@ Parameters for /alt
 
 For error 503 case, 
 extra maximum added response latency (milliseconds)
->DS_LAT_ALT=3000
+>DS_LAT_ERR=3000
 
 Example custom header
 >DS_META_VER="1.20(3)"
