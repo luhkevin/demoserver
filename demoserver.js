@@ -3,7 +3,7 @@ var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 // for each URL route, import environment variable or set default for
 // maximum added response latency (milliseconds) and error 503 probability (percentage)
 //
-// parameters for / (main)
+// parameters for / [main]
 var latencyMax_main = process.env.DS_LAT_MAIN || 1000;
 var errorProb_main  = process.env.DS_ERR_MAIN || 10;
 // parameters for /alt
