@@ -39,7 +39,7 @@ app.get('/', function (request, response) {
         sleep.usleep(snooze*1000);
         console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
-        //response.writeHead(503, {"Content-Type": "text/html"});
+        response.status(503);
         response.render('pages/error', {
                         metaVersion: metaVersion,
                         snooze: snooze
@@ -49,7 +49,6 @@ app.get('/', function (request, response) {
         var snooze = Math.round(Math.random()*latencyMax_main);
         console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
-        //response.writeHead(200, {"Content-Type": "text/html"});
         response.render('pages/normal', {
                         metaVersion: metaVersion,
                         snooze: snooze,
@@ -67,7 +66,7 @@ app.get('/other', function (request, response) {
         sleep.usleep(snooze*1000);
         console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
-        //response.writeHead(503, {"Content-Type": "text/html"});
+        response.status(503);
         response.render('pages/error', {
                         metaVersion: metaVersion,
                         snooze: snooze
@@ -77,7 +76,6 @@ app.get('/other', function (request, response) {
         var snooze = Math.round(Math.random()*latencyMax_other);
         console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
-        //response.writeHead(200, {"Content-Type": "text/html"});
         response.render('pages/normal', {
                         metaVersion: metaVersion,
                         snooze: snooze,
@@ -95,7 +93,7 @@ app.get('/about', function (request, response) {
         sleep.usleep(snooze*1000);
         console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
-        //response.writeHead(503, {"Content-Type": "text/html"});
+        response.status(503);
         response.render('pages/error', {
                         metaVersion: metaVersion,
                         snooze: snooze
@@ -105,7 +103,6 @@ app.get('/about', function (request, response) {
         var snooze = Math.round(Math.random()*latencyMax_about);
         console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
-        //response.writeHead(200, {"Content-Type": "text/html"});
         response.render('pages/normal', {
                         metaVersion: metaVersion,
                         snooze: snooze,

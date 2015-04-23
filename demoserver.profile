@@ -19,6 +19,3 @@ export DS_LAT_ABOUT=0
 # for error 503 case, import environment variable or set default for
 # extra maximum added response latency (milliseconds)
 export DS_LAT_ERR=3000
-
-alias ds='cd $HOME/demoserver; \
-   screen sudo -E nodejs demoserve.js >>demoserve.log '
