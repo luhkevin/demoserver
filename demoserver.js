@@ -4,21 +4,26 @@ var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 // error 503 probability (percentage) and maximum added response latency (milliseconds)
 //
 // parameters for / [main]
-var errorProb_main  = process.env.DS_ERR_MAIN || 10;
-var latencyMax_main = process.env.DS_LAT_MAIN || 1000;
-// parameters for /alt
-var errorProb_alt   = process.env.DS_ERR_ALT  || 20;
-var latencyMax_alt  = process.env.DS_LAT_ALT  || 2000;
-// parameters for /author
-var errorProb_author   = process.env.DS_ERR_AUTHOR  || 50;
-var latencyMax_author  = process.env.DS_LAT_AUTHOR  || 0;
+var errorProb_main   = process.env.DS_ERR_MAIN  || 10;
+var latencyMax_main  = process.env.DS_LAT_MAIN  || 1000;
+// parameters for /other
+var errorProb_other  = process.env.DS_ERR_OTHER || 20;
+var latencyMax_other = process.env.DS_LAT_OTHER || 2000;
+// parameters for /about
+var errorProb_about  = process.env.DS_ERR_ABOUT || 50;
+var latencyMax_about = process.env.DS_LAT_ABOUT || 0;
 
 // for error 503 case, import environment variable or set default for
 // extra maximum added response latency (milliseconds)
-var latencyMax_err  = process.env.DS_LAT_ERR  || 3000;
+var latencyMax_err   = process.env.DS_LAT_ERR   || 3000;
 
-// example custom header
-var metaVersion = process.env.DS_META_VER || "1.20(3)";
+// version assembled from parameters
+var metaVersion =
+    "m"+errorProb_main+","+latencyMax_main+
+    "o"+errorProb_other+","+latencyMax_other+
+    "a"+errorProb_about+","+latencyMax_about+
+    "e"+latencyMax_err;
+console.log("Starting Version "+metaVersion);
 
 var sleep = require('sleep'); //npm install sleep
 
@@ -54,11 +59,11 @@ app.get('/', function (request, response) {
                         });
         }});
 
-app.get('/alt', function (request, response) {
-        console.log("Route /alt")
-        if(Math.random()*100 <= errorProb_alt) {
+app.get('/other', function (request, response) {
+        console.log("Route /other")
+        if(Math.random()*100 <= errorProb_other) {
         // respond with simulated overload
-        var snooze = Math.round(Math.random()*latencyMax_alt) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
+        var snooze = Math.round(Math.random()*latencyMax_other) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
         sleep.usleep(snooze*1000);
         console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
@@ -69,7 +74,7 @@ app.get('/alt', function (request, response) {
                         });
         } else {
         // respond normally
-        var snooze = Math.round(Math.random()*latencyMax_alt);
+        var snooze = Math.round(Math.random()*latencyMax_other);
         console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
         //response.writeHead(200, {"Content-Type": "text/html"});
@@ -82,11 +87,11 @@ app.get('/alt', function (request, response) {
                         });
         }});
 
-app.get('/author', function (request, response) {
-        console.log("Route /author")
-        if(Math.random()*100 <= errorProb_author) {
+app.get('/about', function (request, response) {
+        console.log("Route /about")
+        if(Math.random()*100 <= errorProb_about) {
         // respond with simulated overload
-        var snooze = Math.round(Math.random()*latencyMax_author) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
+        var snooze = Math.round(Math.random()*latencyMax_about) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
         sleep.usleep(snooze*1000);
         console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
@@ -97,7 +102,7 @@ app.get('/author', function (request, response) {
                         });
         } else {
         // respond normally
-        var snooze = Math.round(Math.random()*latencyMax_author);
+        var snooze = Math.round(Math.random()*latencyMax_about);
         console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         sleep.usleep(snooze*1000);
         //response.writeHead(200, {"Content-Type": "text/html"});
@@ -113,5 +118,5 @@ app.get('/author', function (request, response) {
 var server = app.listen(servPort, function () {
                         var host = server.address().address;
                         var port = server.address().port;
-                        console.log('Demo server listening at http://%s:%s', host, port);
+                        console.log('Server listening at http://%s:%s', host, port);
                         });
