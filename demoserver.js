@@ -12,7 +12,7 @@ var errorProb_alt   = process.env.DS_ERR_ALT  || 20;
 
 // for error 503 case, import environment variable or set default for
 // extra maximum added response latency (milliseconds)
-var latencyMax_err  = process.env.DS_LAT_ALT  || 3000;
+var latencyMax_err  = process.env.DS_LAT_ERR  || 3000;
 
 // example custom header
 var metaVersion = process.env.DS_META_VER || "1.20(3)";
