@@ -17,6 +17,12 @@ sudo apt-get -y install git
 # install application
 git clone https://github.com/llang629/demoserver.git
 
+# update .profile with environment variables and start-up alias
+cat demoserver/demoserver.profile >> .profile
+. .profile
+# only effective during this script run
+# after terminating Passenger web server, either logout/login or repeat ". .profile"
+
 cd demoserver
 
 # install node packages
