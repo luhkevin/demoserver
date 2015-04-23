@@ -11,7 +11,7 @@ var errorProb_alt   = process.env.DS_ERR_ALT  || 20;
 var latencyMax_alt  = process.env.DS_LAT_ALT  || 2000;
 // parameters for /author
 var errorProb_author   = process.env.DS_ERR_AUTHOR  || 50;
-var latencyMax_author  = process.env.DS_LAT_AUTHOR  || 5000;
+var latencyMax_author  = process.env.DS_LAT_AUTHOR  || 0;
 
 // for error 503 case, import environment variable or set default for
 // extra maximum added response latency (milliseconds)

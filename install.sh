@@ -20,7 +20,7 @@ git clone https://github.com/llang629/demoserver.git
 cd demoserver
 
 # install node packages
-npm install express sleep
+npm install sleep express ejs
 
 # start application
 screen sudo -E nodejs demoserver.js >>demoserver.log
