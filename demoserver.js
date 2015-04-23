@@ -1,21 +1,21 @@
-var servPort = process.env.TS_PORT || 8080; // default TCP port 8080
+var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 
 // for each URL route, import environment variable or set default for
 // maximum added response latency (milliseconds) and error 503 probability (percentage)
 //
 // parameters for / (main)
-var latencyMax_main = process.env.TS_LAT_MAIN || 1000;
-var errorProb_main  = process.env.TS_ERR_MAIN || 10;
+var latencyMax_main = process.env.DS_LAT_MAIN || 1000;
+var errorProb_main  = process.env.DS_ERR_MAIN || 10;
 // parameters for /alt
-var latencyMax_alt  = process.env.TS_LAT_ALT  || 2000;
-var errorProb_alt   = process.env.TS_ERR_ALT  || 20;
+var latencyMax_alt  = process.env.DS_LAT_ALT  || 2000;
+var errorProb_alt   = process.env.DS_ERR_ALT  || 20;
 
 // for error 503 case, import environment variable or set default for
 // extra maximum added response latency (milliseconds)
-var latencyMax_err  = process.env.TS_LAT_ALT  || 3000;
+var latencyMax_err  = process.env.DS_LAT_ALT  || 3000;
 
 // example custom header
-var metaVersion = process.env.TS_META_VER || "1.20(3)";
+var metaVersion = process.env.DS_META_VER || "1.20(3)";
 
 var sleep = require('sleep'); //npm install sleep
 var express = require('express'); //npm install express
