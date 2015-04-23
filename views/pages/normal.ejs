@@ -5,7 +5,10 @@
 <center>
 <b><%= greeting %></b><br>
 <%= tagline %><br>
+<%if (snooze > 0) { %>
 but you had to wait an extra <%= snooze %> milliseconds<br>
+<% } %>
+
 <br>
 <img src=<%= imageURL %>>
 <% include ../partials/footer %></body>
