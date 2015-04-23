@@ -40,13 +40,13 @@ app.get('/', function (request, response) {
         } else {
         console.log("Responding with normal page");
         response.writeHead(200, {"Content-Type": "text/html"});
-        response.write("<!DOCTYPE html><html><head>");
+        response.write("<html><head>");
         response.write("<title>Demo Server Main</title>");
         response.write("<meta version=\""+metaVersion+"\">");
         response.write("</head>");
         response.write("<body><center>");
         response.write("<b>Surprise!</b><br>Something completely different<br>");
-        if (basicSnooze>0) {response.write("but you had to wait an extra "+basicSnooze+" milliseconds<br><br>");        }
+        if (basicSnooze>0) {response.write("but you had to wait an extra "+basicSnooze+" milliseconds<br><br>"); }
         response.write("<img src=http://lorempixel.com/200/200/>");
         response.write("<br><br><i>Comments to <A HREF=mailto:demoserver@larrylang.net>Larry Lang<A></i>");
         response.write("</body></html>");
@@ -72,13 +72,13 @@ app.get('/alt', function (request, response) {
         } else {
         console.log("Responding with normal page");
         response.writeHead(200, {"Content-Type": "text/html"});
-        response.write("<!DOCTYPE html><html><head>");
+        response.write("<html><head>");
         response.write("<title>Demo Server Alt</title>");
         response.write("<meta version=\""+metaVersion+"\">");
         response.write("</head>");
         response.write("<body><center>");
         response.write("<b>Cheers!</b><br>Everyone loves instant gratification<br>");
-        if (basicSnooze>0) {response.write("but you had to wait an extra "+basicSnooze+" milliseconds<br><br>");        }
+        if (basicSnooze>0) {response.write("but you had to wait an extra "+basicSnooze+" milliseconds<br><br>"); }
         response.write("<img src=http://larrylang.net/images/LarryLangBeer.jpg>");
         response.write("<br><br><i>Comments to <A HREF=mailto:demoserver@larrylang.net>Larry Lang<A></i>");
         response.write("</body></html>");
