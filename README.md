@@ -1,5 +1,5 @@
 # demoserver
-A demonstration web server that injects random latency and possible service unavailable errors
+A demonstration web server that injects random latency and possible service-unavailable errors
 
 Use environment variables to adjust server parameters, with defaults
 
@@ -22,6 +22,6 @@ For error 503 case,
 extra maximum added response latency (milliseconds)
 >DS_LAT_ERR=3000
 
-Example custom header
+Example custom version header
 >DS_META_VER="1.20(3)"
 
