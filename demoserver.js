@@ -40,7 +40,7 @@ app.get('/', function (request, response) {
         } else {
         console.log("Responding with normal page");
         response.writeHead(200, {"Content-Type": "text/html"});
-        response.write("<html><head>");
+        response.write("<!DOCTYPE html><html><head>");
         response.write("<title>Demo Server Main</title>");
         response.write("<meta version=\""+metaVersion+"\">");
         response.write("</head>");
@@ -72,7 +72,7 @@ app.get('/alt', function (request, response) {
         } else {
         console.log("Responding with normal page");
         response.writeHead(200, {"Content-Type": "text/html"});
-        response.write("<html><head>");
+        response.write("<!DOCTYPE html><html><head>");
         response.write("<title>Demo Server Alt</title>");
         response.write("<meta version=\""+metaVersion+"\">");
         response.write("</head>");
