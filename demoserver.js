@@ -1,14 +1,17 @@
 var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 
-// for each URL route, import environment variable or set default for
-// maximum added response latency (milliseconds) and error 503 probability (percentage)
+// for each URL route, import environment variables or set defaults for
+// error 503 probability (percentage) and maximum added response latency (milliseconds)
 //
 // parameters for / [main]
-var latencyMax_main = process.env.DS_LAT_MAIN || 1000;
 var errorProb_main  = process.env.DS_ERR_MAIN || 10;
+var latencyMax_main = process.env.DS_LAT_MAIN || 1000;
 // parameters for /alt
-var latencyMax_alt  = process.env.DS_LAT_ALT  || 2000;
 var errorProb_alt   = process.env.DS_ERR_ALT  || 20;
+var latencyMax_alt  = process.env.DS_LAT_ALT  || 2000;
+// parameters for /author
+var errorProb_author   = process.env.DS_ERR_AUTHOR  || 50;
+var latencyMax_author  = process.env.DS_LAT_AUTHOR  || 5000;
 
 // for error 503 case, import environment variable or set default for
 // extra maximum added response latency (milliseconds)
@@ -18,71 +21,93 @@ var latencyMax_err  = process.env.DS_LAT_ERR  || 3000;
 var metaVersion = process.env.DS_META_VER || "1.20(3)";
 
 var sleep = require('sleep'); //npm install sleep
+
 var express = require('express'); //npm install express
 var app = express();
+app.set('view engine', 'ejs'); // set the view engine to ejs
 
 app.get('/', function (request, response) {
         console.log("Route / (main)")
-        var basicSnooze = Math.round(Math.random()*latencyMax_main);
-        console.log("Adding basic response latency of  "+basicSnooze+" milliseconds");
-        sleep.usleep(basicSnooze*1000);
-        // respond with simulated overload
         if(Math.random()*100 <= errorProb_main) {
-        var errorSnooze = Math.round(Math.random()*latencyMax_err);
-        sleep.usleep(errorSnooze*1000);
-        console.log("Adding error response latency of  "+errorSnooze+" milliseconds");
-        console.log("Responding with 503 error");
-        var totalSnooze = basicSnooze+errorSnooze;
-        response.writeHead(503, {"Content-Type": "text/plain"});
-        response.write("HTTP Error 503\nService unavailable\n\nAdded response latency "+totalSnooze+" milliseconds\n");
-        response.end();
-        // respond normally
+        // respond with simulated overload
+        var snooze = Math.round(Math.random()*latencyMax_main) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
+        sleep.usleep(snooze*1000);
+        console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
+        sleep.usleep(snooze*1000);
+        //response.writeHead(503, {"Content-Type": "text/html"});
+        response.render('pages/error', {
+                        metaVersion: metaVersion,
+                        snooze: snooze
+                        });
         } else {
-        console.log("Responding with normal page");
-        response.writeHead(200, {"Content-Type": "text/html"});
-        response.write("<!DOCTYPE html><html><head>");
-        response.write("<title>Demo Server Main</title>");
-        response.write("<meta version=\""+metaVersion+"\">");
-        response.write("</head>");
-        response.write("<body><center>");
-        response.write("<b>Surprise!</b><br>Something completely different<br>");
-        if (basicSnooze>0) {response.write("but you had to wait an extra "+basicSnooze+" milliseconds<br><br>"); }
-        response.write("<img src=http://lorempixel.com/200/200/>");
-        response.write("<br><br><i>Comments to <A HREF=mailto:demoserver@larrylang.net>Larry Lang<A></i>");
-        response.write("</body></html>");
-        response.end();
+        // respond normally
+        var snooze = Math.round(Math.random()*latencyMax_main);
+        console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
+        sleep.usleep(snooze*1000);
+        //response.writeHead(200, {"Content-Type": "text/html"});
+        response.render('pages/normal', {
+                        metaVersion: metaVersion,
+                        snooze: snooze,
+                        greeting: 'Welcome!',
+                        tagline: 'You\'ve come to the right place',
+                        imageURL: 'http://gencoresystems.com/wp-content/uploads/2014/09/logo.png'
+                        });
         }});
 
 app.get('/alt', function (request, response) {
         console.log("Route /alt")
-        var basicSnooze = Math.round(Math.random()*latencyMax_alt);
-        console.log("Adding basic response latency of  "+basicSnooze+" milliseconds");
-        sleep.usleep(basicSnooze*1000);
-        // respond with simulated overload
         if(Math.random()*100 <= errorProb_alt) {
-        var errorSnooze = Math.round(Math.random()*latencyMax_err);
-        sleep.usleep(errorSnooze*1000);
-        console.log("Adding error response latency of  "+errorSnooze+" milliseconds");
-        console.log("Responding with 503 error");
-        var totalSnooze = basicSnooze+errorSnooze;
-        response.writeHead(503, {"Content-Type": "text/plain"});
-        response.write("HTTP Error 503\nService unavailable\n\nAdded response latency "+totalSnooze+" milliseconds\n");
-        response.end();
-        // respond normally
+        // respond with simulated overload
+        var snooze = Math.round(Math.random()*latencyMax_alt) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
+        sleep.usleep(snooze*1000);
+        console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
+        sleep.usleep(snooze*1000);
+        //response.writeHead(503, {"Content-Type": "text/html"});
+        response.render('pages/error', {
+                        metaVersion: metaVersion,
+                        snooze: snooze
+                        });
         } else {
-        console.log("Responding with normal page");
-        response.writeHead(200, {"Content-Type": "text/html"});
-        response.write("<!DOCTYPE html><html><head>");
-        response.write("<title>Demo Server Alt</title>");
-        response.write("<meta version=\""+metaVersion+"\">");
-        response.write("</head>");
-        response.write("<body><center>");
-        response.write("<b>Cheers!</b><br>Everyone loves instant gratification<br>");
-        if (basicSnooze>0) {response.write("but you had to wait an extra "+basicSnooze+" milliseconds<br><br>"); }
-        response.write("<img src=http://larrylang.net/images/LarryLangBeer.jpg>");
-        response.write("<br><br><i>Comments to <A HREF=mailto:demoserver@larrylang.net>Larry Lang<A></i>");
-        response.write("</body></html>");
-        response.end();
+        // respond normally
+        var snooze = Math.round(Math.random()*latencyMax_alt);
+        console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
+        sleep.usleep(snooze*1000);
+        //response.writeHead(200, {"Content-Type": "text/html"});
+        response.render('pages/normal', {
+                        metaVersion: metaVersion,
+                        snooze: snooze,
+                        greeting: 'Surprise!',
+                        tagline: 'Something completely different',
+                        imageURL: 'http://lorempixel.com/200/200/'
+                        });
+        }});
+
+app.get('/author', function (request, response) {
+        console.log("Route /author")
+        if(Math.random()*100 <= errorProb_author) {
+        // respond with simulated overload
+        var snooze = Math.round(Math.random()*latencyMax_author) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
+        sleep.usleep(snooze*1000);
+        console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
+        sleep.usleep(snooze*1000);
+        //response.writeHead(503, {"Content-Type": "text/html"});
+        response.render('pages/error', {
+                        metaVersion: metaVersion,
+                        snooze: snooze
+                        });
+        } else {
+        // respond normally
+        var snooze = Math.round(Math.random()*latencyMax_author);
+        console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
+        sleep.usleep(snooze*1000);
+        //response.writeHead(200, {"Content-Type": "text/html"});
+        response.render('pages/normal', {
+                        metaVersion: metaVersion,
+                        snooze: snooze,
+                        greeting: 'Cheers!',
+                        tagline: 'Everyone likes instant gratification',
+                        imageURL: 'http://larrylang.net/images/LarryLangBeer.jpg'
+                        });
         }});
 
 var server = app.listen(servPort, function () {
