@@ -29,4 +29,4 @@ cd demoserver
 npm install sleep express ejs
 
 # start application
-screen sudo -E nodejs demoserver.js >>demoserver.log
+nohup sudo -E nodejs demoserver.js >> demoserver.log &
