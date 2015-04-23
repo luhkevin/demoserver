@@ -17,5 +17,10 @@ sudo apt-get -y install git
 # install application
 git clone https://github.com/llang629/demoserver.git
 
+cd demoserver
+
+# install node packages
+npm express sleep
+
 # start application
 screen sudo -E nodejs demoserver.js >>demoserver.log
