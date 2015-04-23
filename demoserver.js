@@ -34,7 +34,7 @@ app.get('/', function (request, response) {
         console.log("Responding with 503 error");
         var totalSnooze = basicSnooze+errorSnooze;
         response.writeHead(503, {"Content-Type": "text/plain"});
-        response.write("503 Service Unavailable\n\nAdded response latency "+totalSnooze+" milliseconds\n");
+        response.write("HTTP Error 503 Service Unavailable\n\nAdded response latency "+totalSnooze+" milliseconds\n");
         response.end();
         // respond normally
         } else {
@@ -66,7 +66,7 @@ app.get('/alt', function (request, response) {
         console.log("Responding with 503 error");
         var totalSnooze = basicSnooze+errorSnooze;
         response.writeHead(503, {"Content-Type": "text/plain"});
-        response.write("503 Service Unavailable\n\nAdded response latency "+totalSnooze+" milliseconds\n");
+        response.write("HTTP Error 503 Service Unavailable\n\nAdded response latency "+totalSnooze+" milliseconds\n");
         response.end();
         // respond normally
         } else {
