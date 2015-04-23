@@ -6,5 +6,5 @@ For each URL route, environment variables adjust parameters from defaults.
 Parameters include error 503 probability (percentage) 
 and maximum added response latency (milliseconds).
 
-Environment variable to adjust web server TCP from default 8080.
+Environment variable can adjust web server TCP from default 8080.
 To start with TCP port 80, use sudo -E.
