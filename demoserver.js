@@ -1,3 +1,6 @@
+// A demonstration web server that injects possible service-unavailable errors and random latency
+// (c)2015 Larry Lang
+
 var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 
 // for each URL route, import environment variables or set defaults for
