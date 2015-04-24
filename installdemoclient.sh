@@ -20,3 +20,4 @@ npm install http
 
 # start application
 nohup bash democlient.sh >> democlient.log &
+
