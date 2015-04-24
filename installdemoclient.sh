@@ -9,7 +9,7 @@ sudo apt-get -y upgrade
 
 # install node.js and node package manager
 sudo apt-get install -y nodejs-legacy
-sudo apt-get install -y unpm
+sudo apt-get install -y npm
 
 # install javascript and Bash shell
 wget https://raw.githubusercontent.com/llang629/demoserver/master/democlient.sh
