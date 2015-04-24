@@ -1,8 +1,7 @@
 // Tests demoserver running at hostName by sending a request to a random route
 // (c)2015 Larry Lang
 
-//hostName  = 'demos.YOURHOST.COM';
-hostName  = 'demos.larrylang.net';
+hostName  = 'demos.YOURHOST.COM';
 spinMax   = 9;
 
 var randomNumber = function(lower_bound, upper_bound)
@@ -36,9 +35,7 @@ switch(spin) {
         break;
 }
 
-var http = require('http');
-//remember to install via
-//npm install http
+var http = require('http');   //npm install http
 
 var options =
 {
