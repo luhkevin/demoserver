@@ -8,11 +8,11 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 
 # install node.js and node package manager
-sudo apt-get -y nodejs-legacy
-sudo apt-get -y npm
+sudo apt-get install -y nodejs-legacy
+sudo apt-get install -y npm
 
 # install git
-sudo apt-get -y install git
+sudo apt-get install -y git
 
 # install application
 git clone https://github.com/llang629/demoserver.git
