@@ -35,7 +35,7 @@ var app = express();
 app.set('view engine', 'ejs'); // set the view engine to ejs
 
 app.get('/', function (request, response) {
-        console.log("Route / (main)")
+        console.log("Version",metaVersion,"Route / (main)")
         if(Math.random()*100 <= errorProb_main) {
         // respond with simulated overload
         var snooze = Math.round(Math.random()*latencyMax_main) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
@@ -62,7 +62,7 @@ app.get('/', function (request, response) {
         }});
 
 app.get('/other', function (request, response) {
-        console.log("Route /other")
+        console.log("Version",metaVersion,"Route /other")
         if(Math.random()*100 <= errorProb_other) {
         // respond with simulated overload
         var snooze = Math.round(Math.random()*latencyMax_other) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
@@ -89,7 +89,7 @@ app.get('/other', function (request, response) {
         }});
 
 app.get('/about', function (request, response) {
-        console.log("Route /about")
+        console.log("Version",metaVersion,"Route /about")
         if(Math.random()*100 <= errorProb_about) {
         // respond with simulated overload
         var snooze = Math.round(Math.random()*latencyMax_about) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
