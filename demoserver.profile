@@ -24,10 +24,3 @@ export DS_LAT_ABOUT=0
 # extra maximum added response latency (milliseconds)
 export DS_LAT_ERR=3000
 
-# set demoserver host
-export DS_HOST="52.4.76.122"
-
-# spins
-export SPINMIN=0
-export SPINMAX=7
-
