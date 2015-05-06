@@ -23,6 +23,8 @@ var latencyMax_about = process.env.DS_LAT_ABOUT || 0;
 // extra maximum added response latency (milliseconds)
 var latencyMax_err   = process.env.DS_LAT_ERR   || 3000;
 
+var speed = process.env.VERSION || "slow"
+
 // version assembled from parameters
 var metaVersion =
     "m"+errorProb_main+","+latencyMax_main+
@@ -47,6 +49,15 @@ function logger(request) {
 
 // renders the response
 function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase) {
+	var version;
+	if(speed == "slow") {
+		version = 0;
+	} else if (speed == "fast") {
+		version = 1;
+	}
+
+	response.append('Version', version.toString())
+
         if(Math.random()*100 <= errorProb) {
         	// respond with simulated overload
         	var snooze = Math.round(latencyBase + Math.random()*latencyMax) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
