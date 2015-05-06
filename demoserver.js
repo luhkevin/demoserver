@@ -45,7 +45,7 @@ function logger(request) {
 }
 
 // renders the response
-function renderResponse(response, errorProb, latencyMax) {
+function renderResponse(response, viewparams, errorProb, latencyMax) {
         if(Math.random()*100 <= errorProb) {
         	// respond with simulated overload
         	var snooze = Math.round(Math.random()*latencyMax) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
@@ -65,97 +65,40 @@ function renderResponse(response, errorProb, latencyMax) {
 		response.render('pages/normal', {
 				metaVersion: metaVersion,
 				snooze: snooze,
-				greeting: 'Welcome!',
-				tagline: 'You\'ve come to the right place',
-				imageURL: 'http://gencoresystems.com/wp-content/uploads/2014/09/logo.png'
+				greeting: viewparams.greeting,
+				tagline: viewparams.tagline,
+				imageURL: viewparams.imageURL
 				});
 		}
 }
 
 app.get('/', function (request, response) {
 	logger(request);
-	getResponse(response, errorProb_main,latencyMax_main)
-/*
-        if(Math.random()*100 <= errorProb_main) {
-        // respond with simulated overload
-        var snooze = Math.round(Math.random()*latencyMax_main) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
-        sleep.usleep(snooze*1000);
-        console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
-        sleep.usleep(snooze*1000);
-        response.status(503);
-        response.render('pages/error', {
-                        metaVersion: metaVersion,
-                        snooze: snooze
-                        });
-        } else {
-        // respond normally
-        var snooze = Math.round(Math.random()*latencyMax_main);
-        console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
-        sleep.usleep(snooze*1000);
-        response.render('pages/normal', {
-                        metaVersion: metaVersion,
-                        snooze: snooze,
-                        greeting: 'Welcome!',
-                        tagline: 'You\'ve come to the right place',
-                        imageURL: 'http://gencoresystems.com/wp-content/uploads/2014/09/logo.png'
-                        });
-        }
-*/
+	viewparams = {
+			greeting: 'Welcome', 
+			tagline: 'You\'ve come to the right place', 
+			imageURL: 'http://gencoresystems.com/wp-content/uploads/2014/09/logo.png'
+	}
+	renderResponse(response, viewparams, errorProb_main, latencyMax_main)
 });
 
 app.get('/other', function (request, response) {
 	logger(request);
-       if(Math.random()*100 <= errorProb_other) {
-        // respond with simulated overload
-        var snooze = Math.round(Math.random()*latencyMax_other) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
-        sleep.usleep(snooze*1000);
-        console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
-        sleep.usleep(snooze*1000);
-        response.status(503);
-        response.render('pages/error', {
-                        metaVersion: metaVersion,
-                        snooze: snooze
-                        });
-        } else {
-        // respond normally
-        var snooze = Math.round(Math.random()*latencyMax_other);
-        console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
-        sleep.usleep(snooze*1000);
-        response.render('pages/normal', {
-                        metaVersion: metaVersion,
-                        snooze: snooze,
+	viewparams = {
                         greeting: 'Surprise!',
                         tagline: 'Something completely different',
                         imageURL: 'http://lorempixel.com/200/200/'
-                        });
-        }});
+	}
+	renderResponse(response, viewparams, errorProb_other, latencyMax_other)
 
 app.get('/about', function (request, response) {
 	logger(request);
-        if(Math.random()*100 <= errorProb_about) {
-        // respond with simulated overload
-        var snooze = Math.round(Math.random()*latencyMax_about) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
-        sleep.usleep(snooze*1000);
-        console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
-        sleep.usleep(snooze*1000);
-        response.status(503);
-        response.render('pages/error', {
-                        metaVersion: metaVersion,
-                        snooze: snooze
-                        });
-        } else {
-        // respond normally
-        var snooze = Math.round(Math.random()*latencyMax_about);
-        console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
-        sleep.usleep(snooze*1000);
-        response.render('pages/normal', {
-                        metaVersion: metaVersion,
-                        snooze: snooze,
+	viewparams = {
                         greeting: 'Cheers!',
                         tagline: 'Everyone likes instant gratification',
                         imageURL: 'http://larrylang.net/images/LarryLangBeer.jpg'
-                        });
-        }});
+	}
+	renderResponse(response, viewparams, errorProb_about, latencyMax_about)
 
 var server = app.listen(servPort, function () {
                         var host = server.address().address;
