@@ -60,7 +60,7 @@ function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase
 			});
         } else {
         	// respond normally
-        	var snooze = Math.round(Math.random()*latencyMax);
+        	var snooze = Math.round(latencyBase + Math.random()*latencyMax);
         	console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         	sleep.usleep(snooze*1000);
 		response.render('pages/normal', {
@@ -96,6 +96,7 @@ app.get('/other', function (request, response) {
 });
 
 //Fast
+//Never returns 503
 app.get('/about', function (request, response) {
 	logger(request);
 	viewparams = {

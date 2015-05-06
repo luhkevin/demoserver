@@ -1,6 +1,6 @@
 ###########################################################################
 # .profile updates for demoserve.js
-
+#
 # set web server TCP port
 export DS_PORT=8080
 
@@ -17,7 +17,7 @@ export DS_LAT_OTHER=2000
 export DS_LAT_BASE_OTHER=2000
 
 # parameters for /about
-export DS_ERR_ABOUT=50
+export DS_ERR_ABOUT=0
 export DS_LAT_ABOUT=0
 
 # for error 503 case, import environment variable or set default for
@@ -25,5 +25,5 @@ export DS_LAT_ABOUT=0
 export DS_LAT_ERR=3000
 
 # set demoserver host
-export DS_HOST="52.4.76.122"
+export DS_HOST="52.7.49.41"
 
