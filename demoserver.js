@@ -90,6 +90,7 @@ app.get('/other', function (request, response) {
                         imageURL: 'http://lorempixel.com/200/200/'
 	}
 	renderResponse(response, viewparams, errorProb_other, latencyMax_other)
+});
 
 app.get('/about', function (request, response) {
 	logger(request);
@@ -99,6 +100,7 @@ app.get('/about', function (request, response) {
                         imageURL: 'http://larrylang.net/images/LarryLangBeer.jpg'
 	}
 	renderResponse(response, viewparams, errorProb_about, latencyMax_about)
+});
 
 var server = app.listen(servPort, function () {
                         var host = server.address().address;
