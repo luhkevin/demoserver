@@ -1,7 +1,7 @@
 #!/bin/bash
 # repeatedly runs democlient at random intervals up to MAXSLEEP seconds
 
-MAXSLEEP=20
+MAXSLEEP=10
 
 while true; do
     TZ='America/Los_Angeles' date
