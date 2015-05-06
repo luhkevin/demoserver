@@ -2,7 +2,7 @@
 // (c)2015 Larry Lang
 
 hostName  = process.env.DS_HOST;
-spinMax   = 9;
+spinMax   = process.env.SPINMAX || 9;
 
 var randomNumber = function(lower_bound, upper_bound)
 {
