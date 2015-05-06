@@ -1,7 +1,7 @@
 // Tests demoserver running at hostName by sending a request to a random route
 // (c)2015 Larry Lang
 
-hostName  = 'demos.YOURHOST.COM';
+hostName  = process.env.DS_HOST;
 spinMax   = 9;
 
 var randomNumber = function(lower_bound, upper_bound)
@@ -42,7 +42,7 @@ var options =
 host: hostName,
 path: urlPath,
 method: 'GET',
-port: 80,
+port: 8080,
 headers: {
     'User-Agent': 'democlient Agent/1.0'
 }
