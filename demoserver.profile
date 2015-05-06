@@ -14,6 +14,7 @@ export DS_LAT_MAIN=1000
 # parameters for /other
 export DS_ERR_OTHER=20
 export DS_LAT_OTHER=2000
+export DS_LAT_BASE_OTHER=2000
 
 # parameters for /about
 export DS_ERR_ABOUT=50
@@ -25,3 +26,4 @@ export DS_LAT_ERR=3000
 
 # set demoserver host
 export DS_HOST="52.4.76.122"
+
