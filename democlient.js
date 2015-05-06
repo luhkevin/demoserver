@@ -3,6 +3,7 @@
 
 hostName  = process.env.DS_HOST;
 spinMax   = process.env.SPINMAX || 9;
+spinMin   = process.env.SPINMIN || 0;
 
 var randomNumber = function(lower_bound, upper_bound)
 {
@@ -11,7 +12,7 @@ var randomNumber = function(lower_bound, upper_bound)
 }
 
 
-spin = randomNumber(0,spinMax);
+spin = randomNumber(spinMin,spinMax);
 
 switch(spin) {
     case 0:
@@ -19,19 +20,21 @@ switch(spin) {
     case 2:
     case 3:
     case 4:
-    default:
-        urlPath = "/"
-        break;
     case 5:
     case 6:
+        urlPath = "/"
+        break;
     case 7:
-        urlPath = "/other"
+        urlPath = "/about"
         break;
     case 8:
-        urlPath = "/about"
+        urlPath = "/other"
         break;
     case 9:
         urlPath = "/bogus"
+        break;
+    default:
+        urlPath = "/"
         break;
 }
 
