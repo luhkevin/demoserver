@@ -2,8 +2,8 @@
 // (c)2015 Larry Lang
 
 hostName  = process.env.DS_HOST;
-spinMin   = process.env.SPINMIN || 0;
-spinMax   = process.env.SPINMAX || 9;
+spinMin   = process.env.VERSION == "slow" ? 0 : 8;
+spinMax   = process.env.VERSION == "slow" ? 7 : 9;
 
 var randomNumber = function(lower_bound, upper_bound)
 {
@@ -13,6 +13,7 @@ var randomNumber = function(lower_bound, upper_bound)
 
 
 spin = randomNumber(spinMin,spinMax);
+console.log("spin is",spin);
 
 switch(spin) {
     case 0:
