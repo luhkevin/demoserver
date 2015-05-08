@@ -3,7 +3,7 @@
 
 hostName  = process.env.DS_HOST;
 spinMin   = process.env.VERSION == "slow" ? 0 : 8;
-spinMax   = process.env.VERSION == "slow" ? 7 : 9;
+spinMax   = process.env.VERSION == "slow" ? 7 : 8;
 
 var randomNumber = function(lower_bound, upper_bound)
 {
