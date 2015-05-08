@@ -60,7 +60,10 @@ function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase
 
         if(Math.random()*100 <= errorProb) {
         	// respond with simulated overload
-        	var snooze = Math.round(latencyBase + Math.random()*latencyMax) + Math.round(Math.random()*latencyMax_err); //basic latency plus error latency
+		var round1 = Math.round(parseInt(latencyBase)+Math.random()*parseInt(latencyMax));	
+		var round2 = Math.round(Math.random()*parseInt(latencyMax_err));
+        	var snooze = round1 + round2//basic latency plus error latency
+		console.log("503 sleep is",snooze);
 	        sleep.usleep(snooze*1000);
        		console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
 	        sleep.usleep(snooze*1000);
@@ -71,7 +74,8 @@ function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase
 			});
         } else {
         	// respond normally
-        	var snooze = Math.round(latencyBase + Math.random()*latencyMax);
+        	console.log("latencyBase:",latencyBase,"latencyMax",latencyMax);
+		var snooze = Math.round(parseInt(latencyBase) + Math.random()*parseInt(latencyMax))
         	console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         	sleep.usleep(snooze*1000);
 		response.render('pages/normal', {
