@@ -17,7 +17,7 @@ var latencyBase_other = process.env.DS_LAT_BASE_OTHER || 2000;
 
 // parameters for /about
 var errorProb_about  = process.env.DS_ERR_ABOUT || 0;
-var latencyMax_about = process.env.DS_LAT_ABOUT || 0;
+var latencyMax_about = process.env.DS_LAT_ABOUT || 80;
 
 // for error 503 case, import environment variable or set default for
 // extra maximum added response latency (milliseconds)
