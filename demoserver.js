@@ -7,7 +7,7 @@ var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 // error 503 probability (percentage) and maximum added response latency (milliseconds)
 //
 // parameters for / [main]
-var errorProb_main   = process.env.DS_ERR_MAIN  || 10;
+var errorProb_main   = process.env.DS_ERR_MAIN  || 0;
 var latencyMax_main  = process.env.DS_LAT_MAIN  || 500;
 
 // parameters for /other
@@ -16,7 +16,7 @@ var latencyMax_other = process.env.DS_LAT_OTHER || 2000;
 var latencyBase_other = process.env.DS_LAT_BASE_OTHER || 2000;	     
 
 // parameters for /about
-var errorProb_about  = process.env.DS_ERR_ABOUT || 50;
+var errorProb_about  = process.env.DS_ERR_ABOUT || 0;
 var latencyMax_about = process.env.DS_LAT_ABOUT || 0;
 
 // for error 503 case, import environment variable or set default for

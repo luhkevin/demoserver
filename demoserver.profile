@@ -8,8 +8,8 @@ export DS_PORT=8080
 # error 503 probability (percentage) and
 # maximum added response latency (milliseconds)
 # parameters for / [main]
-export DS_ERR_MAIN=10
-export DS_LAT_MAIN=500
+export DS_ERR_MAIN=0
+export DS_LAT_MAIN=350
 
 # parameters for /other
 export DS_ERR_OTHER=20
