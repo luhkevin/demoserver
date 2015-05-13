@@ -20,11 +20,11 @@ switch(spin) {
     case 1:
     case 2:
     case 3:
+        urlPath = "/"
+        break;
     case 4:
     case 5:
     case 6:
-        urlPath = "/"
-        break;
     case 7:
         urlPath = "/about"
         break;
