@@ -8,7 +8,7 @@ var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 //
 // parameters for / [main]
 var errorProb_main   = process.env.DS_ERR_MAIN  || 10;
-var latencyMax_main  = process.env.DS_LAT_MAIN  || 1000;
+var latencyMax_main  = process.env.DS_LAT_MAIN  || 500;
 
 // parameters for /other
 var errorProb_other  = process.env.DS_ERR_OTHER || 20;

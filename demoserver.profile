@@ -9,7 +9,7 @@ export DS_PORT=8080
 # maximum added response latency (milliseconds)
 # parameters for / [main]
 export DS_ERR_MAIN=10
-export DS_LAT_MAIN=1000
+export DS_LAT_MAIN=500
 
 # parameters for /other
 export DS_ERR_OTHER=20
