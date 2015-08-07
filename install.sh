@@ -15,8 +15,7 @@ sudo apt-get install -y npm
 sudo apt-get install -y git
 
 # update .profile with environment variables and start-up alias
-
-cd demoserver
+source demoserver.profile
 
 # install node packages
 npm install sleep express ejs

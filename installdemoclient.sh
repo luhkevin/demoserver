@@ -14,6 +14,9 @@ sudo apt-get install -y npm
 # install node packages
 npm install http
 
+# source fast profile (for throughput testing)
+source fast.profile
+
 # start application
 nohup bash democlient.sh >> democlient.log &
 
