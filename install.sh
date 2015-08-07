@@ -21,5 +21,5 @@ source demoserver.profile
 npm install sleep express ejs
 
 # start application
-nohup sudo -E nodejs demoserver.js >> demoserver.log &
+nohup sudo -E nodejs demoserver.js >> demoserver.log | ts -s &
 

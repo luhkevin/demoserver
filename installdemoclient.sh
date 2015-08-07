@@ -18,5 +18,5 @@ npm install http
 source fast.profile
 
 # start application
-nohup bash democlient.sh >> democlient.log &
+nohup sudo -E democlient.sh >> democlient.log | ts -s &
 
