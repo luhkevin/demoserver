@@ -1,5 +1,5 @@
 # demoserver host
-export DS_HOST="52.7.49.41"
+export DS_HOST="127.0.0.1"
 
 # speed
 export VERSION="slow"

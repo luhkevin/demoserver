@@ -13,7 +13,7 @@ var randomNumber = function(lower_bound, upper_bound)
 
 
 spin = randomNumber(spinMin,spinMax);
-console.log("spin is",spin);
+//console.log("spin is",spin);
 
 switch(spin) {
     case 0:

@@ -1,5 +1,5 @@
 # demoserver host
-export DS_HOST="52.4.76.122"
+export DS_HOST="127.0.0.1"
 
 # spins
 export VERSION="fast"

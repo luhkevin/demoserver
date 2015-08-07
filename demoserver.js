@@ -41,11 +41,10 @@ var app = express();
 app.set('view engine', 'ejs'); // set the view engine to ejs
 
 
-// Logger 
-function logger(request) {
-        console.log("Client",request.connection.remoteAddress, request.headers['user-agent']);
-        console.log("Version",metaVersion,"Route:", request.path);
-}
+//function logger(request) {
+//        console.log("Client",request.connection.remoteAddress, request.headers['user-agent']);
+//        console.log("Version",metaVersion,"Route:", request.path);
+//}
 
 // renders the response
 function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase) {
@@ -63,7 +62,7 @@ function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase
 		var round1 = Math.round(parseInt(latencyBase)+Math.random()*parseInt(latencyMax));	
 		var round2 = Math.round(Math.random()*parseInt(latencyMax_err));
         	var snooze = round1 + round2//basic latency plus error latency
-		console.log("503 sleep is",snooze);
+		//console.log("503 sleep is",snooze);
 	        sleep.usleep(snooze*1000);
        		console.log("Responding with 503 error after added latency of  "+snooze+" milliseconds");
 	        sleep.usleep(snooze*1000);
@@ -74,7 +73,7 @@ function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase
 			});
         } else {
         	// respond normally
-        	console.log("latencyBase:",latencyBase,"latencyMax",latencyMax);
+        	//console.log("latencyBase:",latencyBase,"latencyMax",latencyMax);
 		var snooze = Math.round(parseInt(latencyBase) + Math.random()*parseInt(latencyMax))
         	console.log("Responding with normal page after added latency of "+snooze+" milliseconds");
         	sleep.usleep(snooze*1000);
@@ -90,7 +89,6 @@ function renderResponse(response, viewparams, errorProb, latencyMax, latencyBase
 
 //Regular 
 app.get('/', function (request, response) {
-	logger(request);
 	viewparams = {
 			greeting: 'Welcome', 
 			tagline: 'You\'ve come to the right place', 
@@ -101,7 +99,6 @@ app.get('/', function (request, response) {
 
 //Really slow
 app.get('/other', function (request, response) {
-	logger(request);
 	viewparams = {
                         greeting: 'Surprise!',
                         tagline: 'Something completely different',
@@ -113,7 +110,6 @@ app.get('/other', function (request, response) {
 //Fast
 //Never returns 503
 app.get('/about', function (request, response) {
-	logger(request);
 	viewparams = {
                         greeting: 'Cheers!',
                         tagline: 'Everyone likes instant gratification',

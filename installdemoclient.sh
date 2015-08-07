@@ -11,10 +11,6 @@ sudo apt-get -y upgrade
 sudo apt-get install -y nodejs-legacy
 sudo apt-get install -y npm
 
-# install javascript and Bash shell
-wget https://raw.githubusercontent.com/llang629/demoserver/master/democlient.sh
-wget https://raw.githubusercontent.com/llang629/demoserver/master/democlient.js
-
 # install node packages
 npm install http
 
