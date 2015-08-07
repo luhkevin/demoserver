@@ -8,12 +8,12 @@ var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 //
 // parameters for / [main]
 var errorProb_main   = process.env.DS_ERR_MAIN  || 0;
-var latencyMax_main  = process.env.DS_LAT_MAIN  || 500;
+var latencyMax_main  = process.env.DS_LAT_MAIN  || 50;
 
 // parameters for /other
 var errorProb_other  = process.env.DS_ERR_OTHER || 20;
-var latencyMax_other = process.env.DS_LAT_OTHER || 2000;
-var latencyBase_other = process.env.DS_LAT_BASE_OTHER || 2000;	     
+var latencyMax_other = process.env.DS_LAT_OTHER || 200;
+var latencyBase_other = process.env.DS_LAT_BASE_OTHER || 200;
 
 // parameters for /about
 var errorProb_about  = process.env.DS_ERR_ABOUT || 0;
