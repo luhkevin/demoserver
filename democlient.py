@@ -15,11 +15,11 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 while True:
-    dosleep=random.randint(0,100)
+    dosleep=random.randint(0,500)
     spin=random.randint(0,2)
     #print "spin is: ", str(spin)
 
-    if dosleep == 50:
+    if dosleep == 250:
         time.sleep(1)
 
     if spin == 0:
