@@ -20,5 +20,5 @@ source fast.profile
 echo "Sourced fast profile"
 
 # start application
-nohup sudo -E ./democlient.sh >> democlient.log | ts -i &
+nohup sudo -E ./democlient.sh | ts -i >> democlient.log
 echo "Application started"
