@@ -1,1 +1,1 @@
-python democlient.py &
+nohup python democlient.py &
