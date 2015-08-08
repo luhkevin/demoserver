@@ -8,20 +8,20 @@ var servPort = process.env.DS_PORT || 8080; // default TCP port 8080
 //
 // parameters for / [main]
 var errorProb_main   = process.env.DS_ERR_MAIN  || 0;
-var latencyMax_main  = process.env.DS_LAT_MAIN  || 5;
+var latencyMax_main  = process.env.DS_LAT_MAIN  || 0;
 
 // parameters for /other
 var errorProb_other  = process.env.DS_ERR_OTHER || 20;
-var latencyMax_other = process.env.DS_LAT_OTHER || 5;
-var latencyBase_other = process.env.DS_LAT_BASE_OTHER || 1
+var latencyMax_other = process.env.DS_LAT_OTHER || 0;
+var latencyBase_other = process.env.DS_LAT_BASE_OTHER || 0
 
 // parameters for /about
 var errorProb_about  = process.env.DS_ERR_ABOUT || 0;
-var latencyMax_about = process.env.DS_LAT_ABOUT || 5;
+var latencyMax_about = process.env.DS_LAT_ABOUT || 0;
 
 // for error 503 case, import environment variable or set default for
 // extra maximum added response latency (milliseconds)
-var latencyMax_err   = process.env.DS_LAT_ERR   || 5;
+var latencyMax_err   = process.env.DS_LAT_ERR   || 0;
 
 var speed = process.env.VERSION || "slow"
 
