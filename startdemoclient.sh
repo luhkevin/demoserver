@@ -1,2 +1,2 @@
 #!/bin/bash
-nohup sudo -E ./democlient.sh >> democlient.log | ts -i &
+nohup sudo -E ./democlient.sh | ts -i >> democlient.log2 &
