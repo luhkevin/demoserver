@@ -23,12 +23,12 @@ while True:
         time.sleep(1)
 
     if spin == 0:
-        requests.get('http://127.0.0.1:8080')
+        requests.get('http://127.0.0.1')
         logger.info('Got /')
     elif spin == 1:
-        requests.get('http://127.0.0.1:8080/about')
+        requests.get('http://127.0.0.1/about')
         logger.info('Got /about')
     else:
-        requests.get('http://127.0.0.1:8080/other')
+        requests.get('http://127.0.0.1/other')
         logger.info('Got /other')
 
