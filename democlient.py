@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = logging.FileHandler('demo.log')
+handler = logging.FileHandler('/var/log/demo.log')
 handler.setLevel(logging.INFO)
 
 formatter = logging.Formatter("%(levelname)s;%(asctime)s;%(message)s", "%s")
