@@ -15,12 +15,12 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 while True:
-    dosleep=random.randint(0,1000)
+    dosleep=random.randint(0,300)
     spin=random.randint(0,2)
     #print "spin is: ", str(spin)
 
-    if dosleep == 500:
-        time.sleep(1)
+    if dosleep == 150:
+        time.sleep(0.5)
 
     if spin == 0:
         requests.get('http://127.0.0.1:8080')
