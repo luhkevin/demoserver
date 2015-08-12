@@ -9,11 +9,12 @@ logger.setLevel(logging.INFO)
 handler = logging.FileHandler('/var/log/demo.log')
 handler.setLevel(logging.INFO)
 
-formatter = logging.Formatter("%(levelname)s;%(asctime)s;%(message)s", "%s")
+formatter = logging.Formatter("%(asctime)s;%(message)s", "%s")
 handler.setFormatter(formatter)
 
 logger.addHandler(handler)
 
+port = str(80)
 while True:
     dosleep=random.randint(0,750)
     spin=random.randint(0,2)
@@ -23,12 +24,15 @@ while True:
         time.sleep(1)
 
     if spin == 0:
-        requests.get('http://127.0.0.1/index.html')
-        logger.info('Got /')
+        r = requests.get('http://127.0.0.1:' + port + '/index.html')
+        latency = r.elapsed
+        logger.info('Got /index;' + str(latency))
     elif spin == 1:
-        requests.get('http://127.0.0.1/about.html')
-        logger.info('Got /about')
+        r = requests.get('http://127.0.0.1:' + port + '/about.html')
+        latency = r.elapsed
+        logger.info('Got /about;' + str(latency))
     else:
-        requests.get('http://127.0.0.1/other.html')
-        logger.info('Got /other')
+        r = requests.get('http://127.0.0.1:' + port + '/other.html')
+        latency = r.elapsed
+        logger.info('Got /other;' + str(latency))
 
