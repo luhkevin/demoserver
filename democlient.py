@@ -26,13 +26,13 @@ while True:
     if spin == 0:
         r = requests.get('http://127.0.0.1:' + port + '/index.html')
         latency = r.elapsed
-        logger.info('Got /index;' + str(latency))
+        #logger.info('Got /index;' + str(latency))
     elif spin == 1:
         r = requests.get('http://127.0.0.1:' + port + '/about.html')
         latency = r.elapsed
-        logger.info('Got /about;' + str(latency))
+        #logger.info('Got /about;' + str(latency))
     else:
         r = requests.get('http://127.0.0.1:' + port + '/other.html')
         latency = r.elapsed
-        logger.info('Got /other;' + str(latency))
+        #logger.info('Got /other;' + str(latency))
 
