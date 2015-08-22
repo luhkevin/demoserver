@@ -16,11 +16,11 @@ logger.addHandler(handler)
 
 port = str(80)
 while True:
-    dosleep=random.randint(0,750)
+    dosleep=random.randint(0,1500)
     spin=random.randint(0,2)
     #print "spin is: ", str(spin)
 
-    if dosleep == 350:
+    if dosleep == 750:
         time.sleep(1)
 
     if spin == 0:
