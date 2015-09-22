@@ -20,9 +20,9 @@ header_v2 = ("Version", "2")
 json_header = ("Content-Type", "application/javascript")
 UA_headers = [ua_factory.make_ua_header(ua_str) for ua_str in UAs]
 
-json_obj_1_headers = [header_v1, json_header, random.choice(UAs)]
-json_obj_2_headers = [header_v2, json_header, random.choice(UAs)]
-json_obj_3_headers = [header_v2, json_header, random.choice(UAs)]
+json_obj_1_headers = [header_v1, json_header]
+json_obj_2_headers = [header_v2, json_header]
+json_obj_3_headers = [header_v2, json_header]
 
 json_obj_1 = {
     'name': 'Gencore',

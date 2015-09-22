@@ -23,9 +23,11 @@ while True:
     if dosleep == 750:
         time.sleep(1)
     elif dosleep == 1000:
-        r = requests.get('http://127.0.0.1:' + port + '/bogus404')
+        ua_header = random.choice(pool.UA_headers)
+        headers = dict(ua_header[0]=ua_header[1])
+        r = requests.get('http://127.0.0.1:' + port + '/bogus404', headers=headers)
     else:
         url = random.choice(pool.urls)
-        r = requests.get('http://127.0.0.1:' + port + '/' + url)
+        r = requests.get('http://127.0.0.1:' + port + '/' + url, headers=headers)
         latency = r.elapsed
         logger.info('Got ' + url + "; " + str(latency))
