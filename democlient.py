@@ -20,11 +20,12 @@ port = str(8080)
 while True:
     dosleep=random.randint(0,1500)
 
+    ua_header = random.choice(pool.UA_headers)
+    headers = {ua_header[0]:ua_header[1]}
+
     if dosleep == 750:
         time.sleep(1)
     elif dosleep == 1000:
-        ua_header = random.choice(pool.UA_headers)
-        headers = dict(ua_header[0]=ua_header[1])
         r = requests.get('http://127.0.0.1:' + port + '/bogus404', headers=headers)
     else:
         url = random.choice(pool.urls)
